@@ -36,5 +36,56 @@ public class SimpleTests {
 		assertTrue("The initial game board did not have correct height",
 				4 == game.getBoardHeight());
 	}
+	public void testInitialBoardWidth() {
+		assertTrue("The initial game board did not have correct width",
+				4 == game.getBoardWidth());
+	}
+	public void testAddPiece() {
+		int currentPiece = game.getNumPieces();        //derzeitiges Anzahl der Steine
+		game.addPiece();              
+		assertEquals("Es wird kein neuer Stein inizialisiert.",currentPiece+1,game.getNumPieces());
+		
+	}
+	public void testisSpaceLeft() {
+		assertTrue("Falsch",game.isSpaceLeft());
+	}
+	public void testPerformMove(){
+		game.setPieceAt(0,0,2);
+		game.performMove(MoveDirection.EAST);
+		assertTrue(game.getPieceAt(3, 0) == 2);	
+	}
+	public void testsetPieceAt() {
+		game.setPieceAt(0, 0, 2);
+		assertTrue(game.getPieceAt(0,0)== 2);
+	}
+	public void testgetNumMoves() {
+		game.getPieceAt(0, 0);
+		game.performMove(MoveDirection.EAST);
+		assertTrue(game.getNumMoves()==1);
+	}
+	public void testNumPieces() {
+		game.addPiece();
+		game.addPiece();
+		assertTrue(game.getNumPieces()==4);
+	}
+	public void testgetPieceAt() {
+		game.setPieceAt(2, 2, 2);
+		assertTrue(game.getPieceAt(2, 2)==2);
+	}
+	public void testgetPoints() {
+		game.setPieceAt(0, 0, 2);
+		game.setPieceAt(1, 0, 2);
+		game.performMove(MoveDirection.EAST);
+		assertTrue(game.getPoints()==4);
+	}
+	public void testisMovePossible() {
+		game.addPiece();
+		assertTrue(game.isMovePossible());
+	}
+	public void testisMovePossible2() {
+		game.addPiece();
+		assertTrue(game.isMovePossible(MoveDirection.EAST));
+	}
+	
 
 }
