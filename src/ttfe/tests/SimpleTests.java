@@ -8,6 +8,7 @@ import java.util.Random;
 import org.junit.Before;
 import org.junit.Test;
 
+import ttfe.MoveDirection;
 import ttfe.SimulatorInterface;
 import ttfe.TTFEFactory;
 
