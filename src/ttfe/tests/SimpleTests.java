@@ -91,34 +91,48 @@ public class SimpleTests {
 	
 	}
 	
+//	@Test
+//	public void testPerformMove(){
+//		
+//		if (game.isMovePossible(MoveDirection.EAST)) {
+//		assertTrue(game.performMove(MoveDirection.EAST));
+//		}
+//		else {
+//			if(game.isMovePossible(MoveDirection.WEST)){
+//					assertTrue(game.performMove(MoveDirection.WEST));
+//		}
+//			else {
+//				if(game.isMovePossible(MoveDirection.SOUTH)) {
+//					assertTrue(game.performMove(MoveDirection.SOUTH));
+//					
+//				}
+//				else {
+//					if (game.isMovePossible(MoveDirection.NORTH)){
+//						assertTrue(game.performMove(MoveDirection.NORTH));
+//					}
+//					else {
+//						assertFalse(game.performMove(MoveDirection.NORTH));
+//					}
+//				}
+//			}
+//		}
+//	}
+	
 	@Test
 	public void testPerformMove(){
-		//game.setPieceAt(0,0,2);
-		if (game.isMovePossible(MoveDirection.EAST)) {
-		assertTrue(game.performMove(MoveDirection.EAST));
-		}
-		else {
-			if(game.isMovePossible(MoveDirection.WEST)){
-					assertTrue(game.performMove(MoveDirection.WEST));
-		}
-			else {
-				if(game.isMovePossible(MoveDirection.SOUTH)) {
-					assertTrue(game.performMove(MoveDirection.SOUTH));
-					
-				}
-				else {
-					if (game.isMovePossible(MoveDirection.NORTH)){
-						assertTrue(game.performMove(MoveDirection.NORTH));
-					}
-					else {
-						assertFalse(game.performMove(MoveDirection.NORTH));
-					}
-				}
-			}
-		}
-		//game.getNumMoves();
-		//assertTrue(game.getPieceAt(3, 0) == 2);
+		boolean s1 = game.isMovePossible(MoveDirection.EAST);
+		assertEquals(s1,game.performMove(MoveDirection.EAST));
+			
 		
+		boolean s2 = game.isMovePossible(MoveDirection.NORTH);
+		assertEquals(s2,game.performMove(MoveDirection.NORTH));
+			
+		boolean s3 = game.isMovePossible(MoveDirection.SOUTH);
+		assertEquals(s3,game.performMove(MoveDirection.SOUTH));
+			
+		
+		boolean	s4 = game.isMovePossible(MoveDirection.WEST);
+			assertEquals(s4,game.performMove(MoveDirection.WEST));	
 	}
 	
 	@Test
@@ -193,30 +207,30 @@ public class SimpleTests {
 	
 	@Test
 	public void testisMovePossible() {
-		//game.addPiece();
-		assertTrue(game.isMovePossible());
+	if (game.isMovePossible(MoveDirection.EAST)) {
+		assertTrue(game.performMove(MoveDirection.EAST));
 	}
-	
-	@Test
-	public void testisMovePossible2() {
-		game.setPieceAt(0, 0, 2);
-		game.setPieceAt(1, 0, 4);
-		game.setPieceAt(2, 0, 2);
-		game.setPieceAt(3, 0, 4);
-		game.setPieceAt(0, 1, 4);
-		game.setPieceAt(1, 1, 2);
-		game.setPieceAt(2, 1, 4);
-		game.setPieceAt(3, 1, 2);
-		game.setPieceAt(0, 2, 2);
-		game.setPieceAt(1, 2, 4);
-		game.setPieceAt(2, 2, 2);
-		game.setPieceAt(3, 2, 4);
-		game.setPieceAt(0, 3, 4);
-		game.setPieceAt(1, 3, 2);
-		game.setPieceAt(2, 3, 4);
-		game.setPieceAt(3, 3, 2);
-		assertFalse(game.isMovePossible(MoveDirection.EAST));
+	else {
+		if(game.isMovePossible(MoveDirection.NORTH)) {
+			assertTrue(game.performMove(MoveDirection.NORTH));
+		}
+		else {
+			if(game.isMovePossible(MoveDirection.SOUTH)) {
+				assertTrue(game.performMove(MoveDirection.SOUTH));
+			}
+			else {
+				if (game.isMovePossible(MoveDirection.WEST)) {
+					assertTrue(game.performMove(MoveDirection.WEST));
+				}
+				else {
+					if (game.isSpaceLeft()) {
+						assertTrue(game.isMovePossible());
+					}
+				}
+			}
+		}
 	}
-	
-
+		
+		
+	}
 }
