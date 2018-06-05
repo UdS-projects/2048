@@ -12,6 +12,7 @@ import ttfe.MoveDirection;
 import ttfe.SimulatorInterface;
 import ttfe.TTFEFactory;
 
+import static org.junit.Assert.assertFalse;
 /**
  * This class provides a very simple example of how to write tests for this project.
  * You can implement your own tests within this class or any other class within this package.
@@ -46,15 +47,43 @@ public class SimpleTests {
 	
 	@Test
 	public void testAddPiece() {
+		if (game.isSpaceLeft()) {
 		int currentPiece = game.getNumPieces();        //derzeitiges Anzahl der Steine
 		game.addPiece();              
 		assertEquals("Es wird kein neuer Stein inizialisiert.",currentPiece+1,game.getNumPieces());
-		
+		}
+		else {
+			int currentPiece = game.getNumPieces();        //derzeitiges Anzahl der Steine
+			game.addPiece();              
+			assertEquals("Die Vorbedingung stimmt nicht.",currentPiece,game.getNumPieces());
+		}
 	}
 	
 	@Test
 	public void testisSpaceLeft() {
 		assertTrue("Falsch",game.isSpaceLeft());
+	}
+	
+	@Test
+	public void testisSpaceLeft2() {
+		game.getPieceAt(0, 0);
+		game.getPieceAt(0, 1);
+		game.getPieceAt(0, 2);
+		game.getPieceAt(0, 3);
+		game.getPieceAt(1, 0);
+		game.getPieceAt(1, 1);
+		game.getPieceAt(1, 2);
+		game.getPieceAt(1, 3);
+		game.getPieceAt(2, 0);
+		game.getPieceAt(2, 1);
+		game.getPieceAt(2, 2);
+		game.getPieceAt(2, 3);
+		game.getPieceAt(3, 0);
+		game.getPieceAt(3, 1);
+		game.getPieceAt(3, 2);
+		game.getPieceAt(3, 3);
+		assertFalse("Falsch",game.isSpaceLeft());
+	
 	}
 	
 	@Test
@@ -115,8 +144,23 @@ public class SimpleTests {
 	
 	@Test
 	public void testisMovePossible2() {
-		game.getPieceAt(0, 0);
-		assertTrue(game.isMovePossible(MoveDirection.EAST));
+		game.setPieceAt(0, 0, 2);
+		game.setPieceAt(1, 0, 4);
+		game.setPieceAt(2, 0, 2);
+		game.setPieceAt(3, 0, 4);
+		game.setPieceAt(0, 1, 4);
+		game.setPieceAt(1, 1, 2);
+		game.setPieceAt(2, 1, 4);
+		game.setPieceAt(3, 1, 2);
+		game.setPieceAt(0, 2, 2);
+		game.setPieceAt(1, 2, 4);
+		game.setPieceAt(2, 2, 2);
+		game.setPieceAt(3, 2, 4);
+		game.setPieceAt(0, 3, 4);
+		game.setPieceAt(1, 3, 2);
+		game.setPieceAt(2, 3, 4);
+		game.setPieceAt(3, 3, 2);
+		assertFalse(game.isMovePossible(MoveDirection.EAST));
 	}
 	
 
