@@ -53,9 +53,14 @@ public class SimpleTests {
 		assertEquals("Es wird kein neuer Stein inizialisiert.",currentPiece+1,game.getNumPieces());
 		}
 		else {
-			int currentPiece = game.getNumPieces();        //derzeitiges Anzahl der Steine
-			game.addPiece();              
-			assertEquals("Die Vorbedingung stimmt nicht.",currentPiece,game.getNumPieces());
+			for(int i = 0;i<4;i++) {
+				for(int j=0;j<4;j++) {
+			game.setPieceAt(i, j, 2);
+				}
+				int currentPiece = game.getNumPieces();
+				game.addPiece();
+				assertEquals(currentPiece,game.getNumPieces());
+		}
 		}
 	}
 	
