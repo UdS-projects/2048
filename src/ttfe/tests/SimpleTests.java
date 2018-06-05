@@ -90,14 +90,19 @@ public class SimpleTests {
 	public void testPerformMoveAndGetNumMove(){
 		//game.setPieceAt(0,0,2);
 		if (game.isMovePossible(MoveDirection.EAST)) {
-		game.performMove(MoveDirection.EAST);
+		assertTrue(game.performMove(MoveDirection.EAST));
 		}
 		else {
-			game.performMove(MoveDirection.WEST);
+			if(game.isMovePossible(MoveDirection.WEST)){
+					assertTrue(game.performMove(MoveDirection.WEST));
+		}
+			else {
+				assertTrue(game.performMove(MoveDirection.SOUTH));
+			}
 		}
 		//game.getNumMoves();
 		//assertTrue(game.getPieceAt(3, 0) == 2);
-		assertTrue(game.getNumMoves() == 1);
+		
 	}
 	
 	@Test
