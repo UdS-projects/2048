@@ -47,21 +47,32 @@ public class SimpleTests {
 	
 	@Test
 	public void testAddPiece() {
-		if (game.isSpaceLeft()) {
-		int currentPiece = game.getNumPieces();        //derzeitiges Anzahl der Steine
-		game.addPiece();              
-		assertEquals("Es wird kein neuer Stein inizialisiert.",currentPiece+1,game.getNumPieces());
+		
+		int currentPiece = 0;       //derzeitiges Anzahl der Steine
+		game.setPieceAt(0, 0, 0);
+		game.setPieceAt(0, 1, 0);
+		game.setPieceAt(0, 2, 0);
+		game.setPieceAt(0, 3, 0);
+		game.setPieceAt(1, 0, 0);
+		game.setPieceAt(1, 1, 0);
+		game.setPieceAt(1, 2, 0);
+		game.setPieceAt(1, 3, 0);
+		game.setPieceAt(2, 0, 0);
+		game.setPieceAt(2, 1, 0);
+		game.setPieceAt(2, 2, 0);
+		game.setPieceAt(2, 3, 0);
+		game.setPieceAt(3, 0, 0);
+		game.setPieceAt(3, 1, 0);
+		game.setPieceAt(3, 2, 0);
+		game.setPieceAt(3, 3, 0);
+
+		game.addPiece();
+		for(int i=0;i<4;i++) {
+			for(int j=0;j<4;j++) {
+				currentPiece += game.getPieceAt(i, j);
+			}
 		}
-		else {
-			for(int i = 0;i<4;i++) {
-				for(int j=0;j<4;j++) {
-			game.setPieceAt(i, j, 2);
-				}
-				int currentPiece = game.getNumPieces();
-				game.addPiece();
-				assertEquals(currentPiece,game.getNumPieces());
-		}
-		}
+		assertTrue("Kein neuer Stein", currentPiece == 2 || currentPiece == 4);
 	}
 	
 	@Test
@@ -91,33 +102,7 @@ public class SimpleTests {
 	
 	}
 	
-//	@Test
-//	public void testPerformMove(){
-//		
-//		if (game.isMovePossible(MoveDirection.EAST)) {
-//		assertTrue(game.performMove(MoveDirection.EAST));
-//		}
-//		else {
-//			if(game.isMovePossible(MoveDirection.WEST)){
-//					assertTrue(game.performMove(MoveDirection.WEST));
-//		}
-//			else {
-//				if(game.isMovePossible(MoveDirection.SOUTH)) {
-//					assertTrue(game.performMove(MoveDirection.SOUTH));
-//					
-//				}
-//				else {
-//					if (game.isMovePossible(MoveDirection.NORTH)){
-//						assertTrue(game.performMove(MoveDirection.NORTH));
-//					}
-//					else {
-//						assertFalse(game.performMove(MoveDirection.NORTH));
-//					}
-//				}
-//			}
-//		}
-//	}
-	
+
 	@Test
 	public void testPerformMove(){
 		boolean s1 = game.isMovePossible(MoveDirection.EAST);
@@ -137,7 +122,7 @@ public class SimpleTests {
 	
 	@Test
 	public void GetNumMove(){
-		//game.setPieceAt(0,0,2);
+		
 		if (game.isMovePossible(MoveDirection.EAST)) {
 		game.performMove(MoveDirection.EAST);
 		assertTrue(game.getNumMoves() == 1);
@@ -164,8 +149,6 @@ public class SimpleTests {
 			
 			}
 		}
-		//game.getNumMoves();
-		//assertTrue(game.getPieceAt(3, 0) == 2);
 		
 	}
 	
@@ -175,14 +158,7 @@ public class SimpleTests {
 		assertTrue(game.getPieceAt(0,0)== 2);
 	}
 	
-	
-//	@Test
-//	public void testgetNumMoves() {
-//		//game.getPieceAt(0, 0);
-//		if ()
-//			game.performMove(MoveDirection.EAST);
-//		assertTrue(game.getNumMoves()==1);
-//	}
+
 	
 	@Test
 	public void testNumPieces() {
@@ -231,6 +207,68 @@ public class SimpleTests {
 		}
 	}
 		
+	for(int i=0;i<4;i++) {
+		for(int j=0;j<4;j++) {
+			game.setPieceAt(i, j, 2);
+		}
+	}
+		assertTrue("Falsch", game.isMovePossible());
 		
+		game.setPieceAt(0, 0, 2);
+		game.setPieceAt(0, 1, 4);
+		game.setPieceAt(0, 2, 2);
+		game.setPieceAt(0, 3, 4);
+		game.setPieceAt(1, 0, 4);
+		game.setPieceAt(1, 1, 2);
+		game.setPieceAt(1, 2, 4);
+		game.setPieceAt(1, 3, 2);
+		game.setPieceAt(2, 0, 2);
+		game.setPieceAt(2, 1, 4);
+		game.setPieceAt(2, 2, 2);
+		game.setPieceAt(2, 3, 4);
+		game.setPieceAt(3, 0, 4);
+		game.setPieceAt(3, 1, 2);
+		game.setPieceAt(3, 2, 2);
+		game.setPieceAt(3, 3, 2);
+	
+		assertTrue("Falsch", game.isMovePossible());
+		
+		game.setPieceAt(0, 0, 2);
+		game.setPieceAt(0, 1, 4);
+		game.setPieceAt(0, 2, 2);
+		game.setPieceAt(0, 3, 4);
+		game.setPieceAt(1, 0, 4);
+		game.setPieceAt(1, 1, 2);
+		game.setPieceAt(1, 2, 4);
+		game.setPieceAt(1, 3, 2);
+		game.setPieceAt(2, 0, 2);
+		game.setPieceAt(2, 1, 4);
+		game.setPieceAt(2, 2, 2);
+		game.setPieceAt(2, 3, 4);
+		game.setPieceAt(3, 0, 4);
+		game.setPieceAt(3, 1, 2);
+		game.setPieceAt(3, 2, 4);
+		game.setPieceAt(3, 3, 2);
+		
+		assertFalse("Falsch", game.isMovePossible());
+		
+		game.setPieceAt(0, 0, 2);
+		game.setPieceAt(0, 1, 2);
+		game.setPieceAt(0, 2, 2);
+		game.setPieceAt(0, 3, 2);
+		game.setPieceAt(1, 0, 2);
+		game.setPieceAt(1, 1, 2);
+		game.setPieceAt(1, 2, 2);
+		game.setPieceAt(1, 3, 2);
+		game.setPieceAt(2, 0, 2);
+		game.setPieceAt(2, 1, 2);
+		game.setPieceAt(2, 2, 2);
+		game.setPieceAt(2, 3, 2);
+		game.setPieceAt(3, 0, 2);
+		game.setPieceAt(3, 1, 2);
+		game.setPieceAt(3, 2, 2);
+		game.setPieceAt(3, 3, 2);
+		
+		assertTrue("Falsch", game.isMovePossible());
 	}
 }
