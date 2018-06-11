@@ -35,8 +35,9 @@ public class TTFEFactory {
 	 * @return A graphical user interface for a 2048 simulator.
 	 */
 	public static UserInterface createUserInterface(SimulatorInterface game) {
-	  	
-      return new GUI(game);
+	  UserInterface ui = new GUI (game);
+	  ui.updateScreen(game);
+      return ui;
 	}
 
 	/**

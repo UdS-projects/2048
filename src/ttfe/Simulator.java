@@ -7,14 +7,14 @@ import java.util.Random;
 public class Simulator implements SimulatorInterface {
 	
 	//main method -- for testing purposes
-	public static void main(String[] args) {
-		Simulator newGame = (Simulator) TTFEFactory.createSimulator(4, 4, new Random(0));
-		HumanPlayer humanPlayer = (HumanPlayer) TTFEFactory.createPlayer(true);
-		UserInterface mainUI = TTFEFactory.createUserInterface(newGame);
-		
-		//this method runs the game
-		newGame.run(humanPlayer, mainUI);
-	}
+//	public static void main(String[] args) {
+//		Simulator newGame = (Simulator) TTFEFactory.createSimulator(4, 4, new Random(0));
+//		HumanPlayer humanPlayer = (HumanPlayer) TTFEFactory.createPlayer(true);
+//		UserInterface mainUI = TTFEFactory.createUserInterface(newGame);
+//		
+//		//this method runs the game
+//		newGame.run(humanPlayer, mainUI);
+//	}
   
 	int height,  width;
 	Random r;
@@ -33,6 +33,8 @@ public class Simulator implements SimulatorInterface {
 		this.height = height;
 		this.width = width;
 		this.r = seed;
+		addPiece();
+		addPiece();
 	}
 	
 	
@@ -127,7 +129,7 @@ public class Simulator implements SimulatorInterface {
 	@Override
 	public int getPieceAt(int x, int y) {
 		
-		if ((x < width && y < height) && (x>=0 && y>=0) ) {
+		if ((x < width || y < height) || (x>=0 || y>=0) ) {
 			return this.Spielfeld[x][y];
 		}
 		
@@ -181,8 +183,9 @@ public class Simulator implements SimulatorInterface {
 				return false;
 		
 			case WEST:
+				for (int y = 0; y < this.height; y++) {
 				for (int x = this.width-1; x > 0; x--) {
-					for (int y = 0; y < this.height; y++) {
+//					for (int y = 0; y < this.height; y++) {
 						//check if values equal or empty space
 						if (getPieceAt(x,y) == getPieceAt(x-1,y) || (getPieceAt(x,y) == 0)) {
 							return true;
@@ -191,8 +194,9 @@ public class Simulator implements SimulatorInterface {
 				}
 				return false;
 			case EAST:
+				for (int y = 0; y < this.height; y++) {
 				for (int x = 1; x < this.width - 1; x++) {
-					for (int y = 0; y < this.height; y++) {
+//					for (int y = 0; y < this.height; y++) {
 						//check if values equal or empty space
 						if (getPieceAt(x,y) == getPieceAt(x+1,y) || (getPieceAt(x,y) == 0)) {
 							return true;
@@ -233,7 +237,7 @@ public class Simulator implements SimulatorInterface {
 			case NORTH: 	
 			//fill the fields
 				for(int x=0;x<width;x++){
-					for(int y=0;y<height--;y++) {
+					for(int y=0;y<height-1;y++) {
 						if (getPieceAt(x,y)==0) {
 							int z = y++;
 							while(z < height ) {
@@ -423,17 +427,17 @@ public class Simulator implements SimulatorInterface {
 	public void run(PlayerInterface player, UserInterface ui) {
 		//this is the direction
 		MoveDirection direction;
-		addPiece();
-		addPiece();
-		ui.updateScreen(this);
+		
+		
 		//get the moves until moves are not possible
-		while (true) {
+		while (this.isMovePossible()) {
 			//get the direction
 			direction = player.getPlayerMove(this, ui);
 			
 			if (this.isMovePossible(direction)) {
 				//missing: add the points in performMove()
 				this.performMove(direction);
+				ui.updateScreen(this);
 			} else {
 				//show error message that the direction is not possible
 				
@@ -443,7 +447,7 @@ public class Simulator implements SimulatorInterface {
 		}
 		
 		//there are no moves possible so show the game over screen
-//		ui.showGameOverScreen(this);
+		ui.showGameOverScreen(this);
 	}
 	
 	@Override

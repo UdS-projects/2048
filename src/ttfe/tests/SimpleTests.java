@@ -109,8 +109,8 @@ public class SimpleTests {
 
 	@Test
 	public void testPerformMove(){
-		boolean s1 = game.isMovePossible(MoveDirection.EAST);
-		assertEquals(s1,game.performMove(MoveDirection.EAST));
+//		boolean s1 = game.isMovePossible(MoveDirection.EAST);
+//		assertEquals(s1,game.performMove(MoveDirection.EAST));
 			
 		
 		boolean s2 = game.isMovePossible(MoveDirection.NORTH);
@@ -122,6 +122,9 @@ public class SimpleTests {
 		
 		boolean	s4 = game.isMovePossible(MoveDirection.WEST);
 			assertEquals(s4,game.performMove(MoveDirection.WEST));	
+			
+			boolean s1 = game.isMovePossible(MoveDirection.EAST);
+			assertEquals(s1,game.performMove(MoveDirection.EAST));
 	}
 	
 	@Test
