@@ -22,8 +22,8 @@ public class TTFEFactory {
 	 */
 	public static SimulatorInterface createSimulator(int width, int height,
 			Random r) {
-		// TODO: Implement me.
-		return null;
+		Simulator game = new Simulator ( width , height, r );                      //i implemented this 
+		return game;
 	}
 
 	/**
@@ -35,8 +35,8 @@ public class TTFEFactory {
 	 * @return A graphical user interface for a 2048 simulator.
 	 */
 	public static UserInterface createUserInterface(SimulatorInterface game) {
-		// TODO: Implement me.
-		return null;
+	  	
+      return new GUI(game);
 	}
 
 	/**
@@ -50,8 +50,12 @@ public class TTFEFactory {
 	 *         player to select moves.
 	 */
 	public static PlayerInterface createPlayer(boolean human) {
-		// TODO: Implement me.
-		return null;
+		if(human) {
+			return new HumanPlayer ();
+		}
+		else {
+			return (PlayerInterface) new ComputerPlayer();
+		}
 	}
 
 }

@@ -321,20 +321,20 @@ public class SimpleTests {
 		int currentPiece = 0;       //derzeitiges Anzahl der Steine
 		game2.setPieceAt(0, 0, 0);
 		game2.setPieceAt(0, 1, 0);
-		game2.setPieceAt(0, 2, 0);
-		game2.setPieceAt(0, 3, 0);
+//		game2.setPieceAt(0, 2, 0);
+//		game2.setPieceAt(0, 3, 0);
 		game2.setPieceAt(1, 0, 0);
 		game2.setPieceAt(1, 1, 0);
-		game2.setPieceAt(1, 2, 0);
-		game2.setPieceAt(1, 3, 0);
-		game2.setPieceAt(2, 0, 0);
-		game2.setPieceAt(2, 1, 0);
-		game2.setPieceAt(2, 2, 0);
-		game2.setPieceAt(2, 3, 0);
-		game2.setPieceAt(3, 0, 0);
-		game2.setPieceAt(3, 1, 0);
-		game2.setPieceAt(3, 2, 0);
-		game2.setPieceAt(3, 3, 0);
+//		game2.setPieceAt(1, 2, 0);
+//		game2.setPieceAt(1, 3, 0);
+//		game2.setPieceAt(2, 0, 0);
+//		game2.setPieceAt(2, 1, 0);
+//		game2.setPieceAt(2, 2, 0);
+//		game2.setPieceAt(2, 3, 0);
+//		game2.setPieceAt(3, 0, 0);
+//		game2.setPieceAt(3, 1, 0);
+//		game2.setPieceAt(3, 2, 0);
+//		game2.setPieceAt(3, 3, 0);
 
 		game2.addPiece();
 		for(int i=0;i<4;i++) {
@@ -356,8 +356,8 @@ public class SimpleTests {
 		game2.setPieceAt(0, 1, 2);
 		game2.setPieceAt(1, 0, 2);
 		game2.setPieceAt(1, 1, 2);	
-		game2.setPieceAt(2, 0, 2);
-		game2.setPieceAt(2, 1, 2);
+//		game2.setPieceAt(2, 0, 2);
+//		game2.setPieceAt(2, 1, 2);
 		assertFalse("Falsch",game.isSpaceLeft());
 	
 	}
