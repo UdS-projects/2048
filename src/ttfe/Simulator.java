@@ -28,7 +28,7 @@ public class Simulator implements SimulatorInterface {
 	 * @param width
 	 * @param seed
 	 */
-	public Simulator(int height, int width , Random seed){
+	public Simulator(int width , int height, Random seed){
 		this.Spielfeld = new int[width][height];
 		this.height = height;
 		this.width = width;
@@ -239,7 +239,7 @@ public class Simulator implements SimulatorInterface {
 					for(int y=0;y<height--;y++) {
 					
 						if (getPieceAt(x,y)==0) {
-							int z = y++;
+							int z = y+1;
 							while(z < height ) {
 							if (	(value= getPieceAt(x,z) )> 0) {
 								setPieceAt(x,y,value);
@@ -267,7 +267,7 @@ public class Simulator implements SimulatorInterface {
 				for(int x=0;x<width;x++){
 					for(int y=0;y<height--;y++) {
 						if (getPieceAt(x,y)==0) {
-							int z = y++;
+							int z = y+1;
 							while(z < height ) {
 							if (	(value= getPieceAt(x,z) )> 0) {
 								setPieceAt(x,y,value);
@@ -288,7 +288,7 @@ public class Simulator implements SimulatorInterface {
 				for(int x=0;x<width;x++){
 					for(int y=height--;y>0;y--) {
 						if (getPieceAt(x,y)==0) {
-							int z = y--;
+							int z = y-1;
 							while(z > 0 ) {
 							if (	(value= getPieceAt(x,z) )> 0) {
 								setPieceAt(x,y,value);
@@ -313,7 +313,7 @@ public class Simulator implements SimulatorInterface {
 				for(int x=0;x<width;x++){
 					for(int y=height--;y>0;y--) {
 						if (getPieceAt(x,y)==0) {
-							int z = y--;
+							int z = y-1;
 							while(z > 0 ) {
 							if (	(value= getPieceAt(x,z) )> 0) {
 								setPieceAt(x,y,value);
@@ -334,7 +334,7 @@ public class Simulator implements SimulatorInterface {
 				for(int y=0;y<height;y++){
 					for(int x=width--;x>0;x--) {
 						if (getPieceAt(x,y)==0) {
-							int z = x--;
+							int z = x-1;
 							while(z > 0 ) {
 							if (	(value= getPieceAt(z,y) )> 0) {
 								setPieceAt(x,y,value);
@@ -360,7 +360,7 @@ public class Simulator implements SimulatorInterface {
 				for(int y=0;y<height;y++){
 					for(int x=width--;x>0;x--) {
 						if (getPieceAt(x,y)==0) {
-							int z = x--;
+							int z = x-1;
 							while(z > 0 ) {
 							if (	(value= getPieceAt(z,y) )> 0) {
 								setPieceAt(x,y,value);
@@ -379,7 +379,7 @@ public class Simulator implements SimulatorInterface {
 				for(int y=0;y<height;y++){
 					for(int x=0;x<width--;x++) {
 						if (getPieceAt(x,y)==0) {
-							int z = x++;
+							int z = x+1;
 							while(z < width ) {
 							if (	(value= getPieceAt(z,y) )> 0) {
 								setPieceAt(x,y,value);
@@ -404,7 +404,7 @@ public class Simulator implements SimulatorInterface {
 				for(int y=0;y<height;y++){
 					for(int x=0;x<width--;x++) {
 						if (getPieceAt(x,y)==0) {
-							int z = x++;
+							int z = x+1;
 							while(z < width ) {
 							if (	(value= getPieceAt(z,y) )> 0) {
 								setPieceAt(x,y,value);
