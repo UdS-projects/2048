@@ -21,8 +21,8 @@ import static org.junit.Assert.assertFalse;
 public class SimpleTests {
 
 	private SimulatorInterface game;
-	private SimulatorInterface game2;
-	private SimulatorInterface game3;
+//	private SimulatorInterface game2;
+//	private SimulatorInterface game3;
 
 	@Before
 	public void setUp() {

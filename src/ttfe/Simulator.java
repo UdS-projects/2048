@@ -255,10 +255,10 @@ public class Simulator implements SimulatorInterface {
 
 				for(int x=0;x<width;x++) {
 					for(int y=0;y<height--;y++) {
-						if ((value=getPieceAt(x,y))== getPieceAt(x,y++)) {
+						if ((value=getPieceAt(x,y))== getPieceAt(x,y+1)) {
 							setPieceAt(x,y,2*value);
 							points += getPieceAt(x,y);                 //new score
-							setPieceAt(x,y++,0);
+							setPieceAt(x,y+1,0);
 						}
 					}
 				}
@@ -302,10 +302,10 @@ public class Simulator implements SimulatorInterface {
 				}
 				for(int x=0;x<width;x++) {
 					for(int y=height--;y>0;y--) {
-						if ((value=getPieceAt(x,y))== getPieceAt(x,y--)) {
+						if ((value=getPieceAt(x,y))== getPieceAt(x,y-1)) {
 							setPieceAt(x,y,2*value);
 							points += getPieceAt(x,y);
-							setPieceAt(x,y--,0);
+							setPieceAt(x,y-1,0);
 						}
 					}
 				}
@@ -349,10 +349,10 @@ public class Simulator implements SimulatorInterface {
 
 				for(int y=0;y<height;y++) {
 					for(int x=width--;x>0;x--) {
-						if ((value=getPieceAt(x,y))== getPieceAt(x--,y)) {
+						if ((value=getPieceAt(x,y))== getPieceAt(x-1,y)) {
 							setPieceAt(x,y,2*value);
 							points += getPieceAt(x,y);
-							setPieceAt(x--,y,0);
+							setPieceAt(x-1,y,0);
 						}
 					}
 				}
@@ -393,10 +393,10 @@ public class Simulator implements SimulatorInterface {
 				}
 				for(int y=0;y<height;y++) {
 					for(int x=0;x<width--;x++) {
-						if ((value=getPieceAt(x,y))== getPieceAt(x++,y)) {
+						if ((value=getPieceAt(x,y))== getPieceAt(x+1,y)) {
 							setPieceAt(x,y,2*value);
 							points += getPieceAt(x,y);
-							setPieceAt(x++,y,0);
+							setPieceAt(x+1,y,0);
 						}
 					}
 				}

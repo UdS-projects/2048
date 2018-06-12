@@ -51,12 +51,13 @@ public class TTFEFactory {
 	 *         player to select moves.
 	 */
 	public static PlayerInterface createPlayer(boolean human) {
-		if(human) {
+		if(true) {
 			return new HumanPlayer ();
-		}
-		else {
-			return (PlayerInterface) new ComputerPlayer();
-		}
+	   }
+		   else {
+			    return (PlayerInterface) new ComputerPlayer();
+		  }
+		
 	}
 
 }
