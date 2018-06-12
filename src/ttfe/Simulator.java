@@ -150,7 +150,8 @@ public class Simulator implements SimulatorInterface {
 				|| isMovePossible(MoveDirection.NORTH) 
 				|| isMovePossible(MoveDirection.EAST) 
 				|| isMovePossible(MoveDirection.SOUTH) 
-				|| isMovePossible(MoveDirection.WEST));
+				|| isMovePossible(MoveDirection.WEST)
+				);
 		
 		/*
 		
@@ -211,7 +212,7 @@ for(int x = 0 ; x<this.width-1;x++){
 				for (int x = 0; x < this.width; x++) {
 					for (int y = 0; y < this.height-1; y++) {
 						//check if values equal or empty space
-						if (getPieceAt(x,y) == getPieceAt(x,y+1) || (getPieceAt(x,y) == 0)) {
+						if ((getPieceAt(x,y)>0 &&getPieceAt(x,y) == getPieceAt(x,y+1) )|| (getPieceAt(x,y) == 0)) {
 							return true;
 						}
 					}
@@ -223,7 +224,7 @@ for(int x = 0 ; x<this.width-1;x++){
 				for (int x = 0; x < this.width; x++) {
 					for (int y = this.height-1; y > 0; y--) {
 						//check if values equal or empty space
-						if (getPieceAt(x,y) == getPieceAt(x,y-1) || (getPieceAt(x,y) == 0)) {
+						if ((getPieceAt(x,y)>0 &&getPieceAt(x,y) == getPieceAt(x,y-1)) || (getPieceAt(x,y) == 0)) {
 							return true;
 						}
 					}
@@ -232,20 +233,22 @@ for(int x = 0 ; x<this.width-1;x++){
 				return false;
 		
 			case WEST:
-				for (int x = 0; x < this.width - 1; x++) {
-					for (int y = 0; y < this.height; y++) {
+				
+					for (int y = 0; y < this.height; y++) {                           //changed x and y for loop coordinate
+						for (int x = 0; x < this.width - 1; x++) {
 						//check if values equal or empty space
-						if (getPieceAt(x,y) == getPieceAt(x+1,y) || (getPieceAt(x,y) == 0)) {    //changed - with +1
+						if ((getPieceAt(x,y)>0 && getPieceAt(x,y) == getPieceAt(x+1,y)) || (getPieceAt(x,y) == 0)) {    //changed - with +1
 							return true;
 						}
 					}
 				}
 				return false;
 			case EAST:
-				for (int x = this.width-1; x > 0; x--) {
+		
 					for (int y = 0; y < this.height; y++) {
+						for (int x = this.width-1; x > 0; x--) {
 						//check if values equal or empty space
-						if (getPieceAt(x,y) == getPieceAt(x-1,y) || (getPieceAt(x,y) == 0)) {       //changed + with -1
+						if ((getPieceAt(x,y)>0 && getPieceAt(x,y) == getPieceAt(x-1,y)) || (getPieceAt(x,y) == 0)) {       //changed + with -1
 							return true;
 						}
 					}
@@ -264,9 +267,7 @@ for(int x = 0 ; x<this.width-1;x++){
 			for(int j=0;j<height;j++) {
 				if (getPieceAt(i,j)==0) {
 					return true;
-					
 				}
-				
 			}
 		}
 		
@@ -335,12 +336,12 @@ for(int x = 0 ; x<this.width-1;x++){
 				//fill the fields
 				for(int x=0;x<width;x++){
 					for(int y=height-1;y>0;y--) {
-						if (getPieceAt(x,y)==0) {
-							int z = y-1;
-							while(z > -1 ) {
+						if (getPieceAt(x,y)==0) { //is there empty space?
+							int z = y-1; //height index of empty space
+							while(z > -1 ) { 
 							if (	(value= getPieceAt(x,z) )> 0) {
 								setPieceAt(x,y,value);
-								setPieceAt(x,z,0);
+								setPieceAt(x,z,0); //set empty
 								break;
 							}
 							else z -=1;
@@ -363,7 +364,7 @@ for(int x = 0 ; x<this.width-1;x++){
 						if (getPieceAt(x,y)==0) {
 							int z = y-1;
 							while(z > -1 ) {
-							if (	(value= getPieceAt(x,z) )> 0) {
+							if ((value= getPieceAt(x,z) )> 0) {
 								setPieceAt(x,y,value);
 								setPieceAt(x,z,0);
 								break;
