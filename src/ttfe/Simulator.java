@@ -236,7 +236,7 @@ public class Simulator implements SimulatorInterface {
 			case NORTH: 	
 			//fill the fields
 				for(int x=0;x<width;x++){
-					for(int y=0;y<height--;y++) {
+					for(int y=0;y<height-1;y++) {
 					
 						if (getPieceAt(x,y)==0) {
 							int z = y+1;
@@ -246,7 +246,7 @@ public class Simulator implements SimulatorInterface {
 								setPieceAt(x,z,0);
 								break;
 							}
-							else z++;
+							else z+=1;
 							}
 						}
 					}
@@ -254,7 +254,7 @@ public class Simulator implements SimulatorInterface {
 				
 
 				for(int x=0;x<width;x++) {
-					for(int y=0;y<height--;y++) {
+					for(int y=0;y<height-1;y++) {
 						if ((value=getPieceAt(x,y))== getPieceAt(x,y+1)) {
 							setPieceAt(x,y,2*value);
 							points += getPieceAt(x,y);                 //new score
@@ -265,7 +265,7 @@ public class Simulator implements SimulatorInterface {
 
 				//fill the fields
 				for(int x=0;x<width;x++){
-					for(int y=0;y<height--;y++) {
+					for(int y=0;y<height-1;y++) {
 						if (getPieceAt(x,y)==0) {
 							int z = y+1;
 							while(z < height ) {
@@ -274,7 +274,7 @@ public class Simulator implements SimulatorInterface {
 								setPieceAt(x,z,0);
 								break;
 							}
-							else z++;
+							else z+=1;
 							}
 						}
 					}
@@ -286,7 +286,7 @@ public class Simulator implements SimulatorInterface {
 
 				//fill the fields
 				for(int x=0;x<width;x++){
-					for(int y=height--;y>0;y--) {
+					for(int y=height-1;y>0;y--) {
 						if (getPieceAt(x,y)==0) {
 							int z = y-1;
 							while(z > 0 ) {
@@ -295,13 +295,13 @@ public class Simulator implements SimulatorInterface {
 								setPieceAt(x,z,0);
 								break;
 							}
-							else z--;
+							else z -=1;
 							}
 						}
 					}
 				}
 				for(int x=0;x<width;x++) {
-					for(int y=height--;y>0;y--) {
+					for(int y=height-1;y>0;y--) {
 						if ((value=getPieceAt(x,y))== getPieceAt(x,y-1)) {
 							setPieceAt(x,y,2*value);
 							points += getPieceAt(x,y);
@@ -311,7 +311,7 @@ public class Simulator implements SimulatorInterface {
 				}
 				//fill the fields
 				for(int x=0;x<width;x++){
-					for(int y=height--;y>0;y--) {
+					for(int y=height-1;y>0;y--) {
 						if (getPieceAt(x,y)==0) {
 							int z = y-1;
 							while(z > 0 ) {
@@ -320,7 +320,7 @@ public class Simulator implements SimulatorInterface {
 								setPieceAt(x,z,0);
 								break;
 							}
-							else z--;
+							else z -=1;
 							}
 						}
 					}
@@ -332,7 +332,7 @@ public class Simulator implements SimulatorInterface {
 
 				//fill the fields
 				for(int y=0;y<height;y++){
-					for(int x=width--;x>0;x--) {
+					for(int x=width-1;x>0;x--) {
 						if (getPieceAt(x,y)==0) {
 							int z = x-1;
 							while(z > 0 ) {
@@ -341,14 +341,14 @@ public class Simulator implements SimulatorInterface {
 								setPieceAt(z,y,0);
 								break;
 							}
-							else z--;
+							else z -= 1;
 							}
 						}
 					}
 				}
 
 				for(int y=0;y<height;y++) {
-					for(int x=width--;x>0;x--) {
+					for(int x=width-1;x>0;x--) {
 						if ((value=getPieceAt(x,y))== getPieceAt(x-1,y)) {
 							setPieceAt(x,y,2*value);
 							points += getPieceAt(x,y);
@@ -358,7 +358,7 @@ public class Simulator implements SimulatorInterface {
 				}
 
 				for(int y=0;y<height;y++){
-					for(int x=width--;x>0;x--) {
+					for(int x=width-1;x>0;x--) {
 						if (getPieceAt(x,y)==0) {
 							int z = x-1;
 							while(z > 0 ) {
@@ -367,7 +367,7 @@ public class Simulator implements SimulatorInterface {
 								setPieceAt(z,y,0);
 								break;
 							}
-							else z--;
+							else z -= 1;
 							}
 						}
 					}
@@ -377,7 +377,7 @@ public class Simulator implements SimulatorInterface {
 			case WEST:
 
 				for(int y=0;y<height;y++){
-					for(int x=0;x<width--;x++) {
+					for(int x=0;x<width-1;x++) {
 						if (getPieceAt(x,y)==0) {
 							int z = x+1;
 							while(z < width ) {
@@ -386,13 +386,13 @@ public class Simulator implements SimulatorInterface {
 								setPieceAt(z,y,0);
 								break;
 							}
-							else z++;
+							else z +=1;
 							}
 						}
 					}
 				}
 				for(int y=0;y<height;y++) {
-					for(int x=0;x<width--;x++) {
+					for(int x=0;x<width-1;x++) {
 						if ((value=getPieceAt(x,y))== getPieceAt(x+1,y)) {
 							setPieceAt(x,y,2*value);
 							points += getPieceAt(x,y);
@@ -402,7 +402,7 @@ public class Simulator implements SimulatorInterface {
 				}
 
 				for(int y=0;y<height;y++){
-					for(int x=0;x<width--;x++) {
+					for(int x=0;x<width-1;x++) {
 						if (getPieceAt(x,y)==0) {
 							int z = x+1;
 							while(z < width ) {
@@ -411,7 +411,7 @@ public class Simulator implements SimulatorInterface {
 								setPieceAt(z,y,0);
 								break;
 							}
-							else z++;
+							else z += 1;
 							}
 						}
 					}
