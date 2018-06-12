@@ -184,20 +184,24 @@ public class Simulator implements SimulatorInterface {
 				return false;
 		
 			case WEST:
-				for (int x = this.width-1; x > 0; x--) {
+//				for (int x = this.width-1; x > 0; x--) {
+//					for (int y = 0; y < this.height; y++) {
+				for (int x = 0; x < this.width - 1; x++) {
 					for (int y = 0; y < this.height; y++) {
 						//check if values equal or empty space
-						if (getPieceAt(x,y) == getPieceAt(x-1,y) || (getPieceAt(x,y) == 0)) {
+						if (getPieceAt(x,y) == getPieceAt(x+1,y) || (getPieceAt(x,y) == 0)) {    //changed - with +1
 							return true;
 						}
 					}
 				}
 				return false;
 			case EAST:
-				for (int x = 1; x < this.width - 1; x++) {
+//				for (int x = 1; x < this.width - 1; x++) {
+//					for (int y = 0; y < this.height; y++) {
+				for (int x = this.width-1; x > 0; x--) {
 					for (int y = 0; y < this.height; y++) {
 						//check if values equal or empty space
-						if (getPieceAt(x,y) == getPieceAt(x+1,y) || (getPieceAt(x,y) == 0)) {
+						if (getPieceAt(x,y) == getPieceAt(x-1,y) || (getPieceAt(x,y) == 0)) {       //changed + with -1
 							return true;
 						}
 					}

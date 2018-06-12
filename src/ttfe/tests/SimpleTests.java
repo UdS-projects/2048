@@ -219,7 +219,7 @@ public class SimpleTests {
 			game.setPieceAt(i, j, 2);
 		}
 	}
-		assertFalse("Falsch", game.isMovePossible());
+		assertTrue("Falsch", game.isMovePossible());
 		
 		game.setPieceAt(0, 0, 2);
 		game.setPieceAt(0, 1, 4);
