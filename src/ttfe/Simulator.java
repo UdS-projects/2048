@@ -141,11 +141,18 @@ public class Simulator implements SimulatorInterface {
 	
 	@Override
 	public int getPoints() {
-		
 		return points;
 	}
 	@Override
 	public boolean isMovePossible() {
+		
+		return (isSpaceLeft() 
+				|| isMovePossible(MoveDirection.NORTH) 
+				|| isMovePossible(MoveDirection.EAST) 
+				|| isMovePossible(MoveDirection.SOUTH) 
+				|| isMovePossible(MoveDirection.WEST));
+		
+		/*
 		
 		boolean tr = true;
 		for(int x = 0 ; x<this.width;x++){
@@ -181,20 +188,18 @@ for(int x = 0 ; x<this.width-1;x++){
 	
 	for(int y=0;y<this.height;y++) {
 		
-		if (Spielfeld[x][y]==Spielfeld[x+1][y]) {
+			if (Spielfeld[x][y]==Spielfeld[x+1][y]) {
 			
-			return true;
-		}
+				return true;
+			}
 			
 		}
 		
 	}
 			
-		
-		
-		
-		
+
 		return false;
+		*/
 	}
 	
 	@Override
@@ -227,8 +232,6 @@ for(int x = 0 ; x<this.width-1;x++){
 				return false;
 		
 			case WEST:
-//				for (int x = this.width-1; x > 0; x--) {
-//					for (int y = 0; y < this.height; y++) {
 				for (int x = 0; x < this.width - 1; x++) {
 					for (int y = 0; y < this.height; y++) {
 						//check if values equal or empty space
@@ -239,8 +242,6 @@ for(int x = 0 ; x<this.width-1;x++){
 				}
 				return false;
 			case EAST:
-//				for (int x = 1; x < this.width - 1; x++) {
-//					for (int y = 0; y < this.height; y++) {
 				for (int x = this.width-1; x > 0; x--) {
 					for (int y = 0; y < this.height; y++) {
 						//check if values equal or empty space
