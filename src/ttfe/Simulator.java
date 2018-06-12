@@ -143,15 +143,27 @@ public class Simulator implements SimulatorInterface {
 	public int getPoints() {
 		return points;
 	}
+	
 	@Override
 	public boolean isMovePossible() {
-		
-		return (isSpaceLeft() 
+		int akku=0;
+		for(int x=0;x<width;x++) {
+			for(int y=0;y<height;y++) {
+				if (getPieceAt(x,y)==0) {
+					akku +=1;
+				}
+			}
+		}
+		if (akku == (width*height)){
+			return false;
+		}
+		else return (isSpaceLeft() 
 				|| isMovePossible(MoveDirection.NORTH) 
 				|| isMovePossible(MoveDirection.EAST) 
 				|| isMovePossible(MoveDirection.SOUTH) 
 				|| isMovePossible(MoveDirection.WEST)
 				);
+		
 		
 		/*
 		
@@ -278,6 +290,10 @@ for(int x = 0 ; x<this.width-1;x++){
 	public boolean performMove(MoveDirection direction) {
 		
 		int value;      //value of the pieces
+		
+		if (! isMovePossible()) {
+			return false;
+		}
 		
 		if (isMovePossible(direction)) {
 			switch (direction) {
@@ -469,7 +485,7 @@ for(int x = 0 ; x<this.width-1;x++){
 				return true;
 			}
 		}
-		 return false;
+		return false;
 	}
 	
 	@Override
