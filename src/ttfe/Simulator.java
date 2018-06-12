@@ -83,29 +83,30 @@ public class Simulator implements SimulatorInterface {
 	@Override
 	public int getNumMoves() {
 		
-		int akku =0;
-		if (performMove(MoveDirection.EAST)) {
-			akku++;
-		}
-		else {
-			if (performMove(MoveDirection.NORTH)) {
-				akku++;
-			}
-			else {
-				if (performMove(MoveDirection.SOUTH)) {
-					akku++;
-				}
-				else {
-					if (performMove(MoveDirection.WEST)) {
-						akku++;
-					}
-					else {
-						return akku;
-					}
-				}
-			}
-		}
-		return akku;
+//		int akku =0;
+//		if (performMove(MoveDirection.EAST)) {
+//			akku++;
+//		}
+//		else {
+//			if (performMove(MoveDirection.NORTH)) {
+//				akku++;
+//			}
+//			else {
+//				if (performMove(MoveDirection.SOUTH)) {
+//					akku++;
+//				}
+//				else {
+//					if (performMove(MoveDirection.WEST)) {
+//						akku++;
+//					}
+//					else {
+//						return akku;
+//					}
+//				}
+//			}
+//		}
+//		return akku;
+		return move;
 	}
 	
 	@Override
@@ -129,11 +130,11 @@ public class Simulator implements SimulatorInterface {
 	@Override
 	public int getPieceAt(int x, int y) {
 		
-		if ((x < width || y < height) || (x>=0 || y>=0) ) {
+		if (x<width && y<height && x>=0 && y>=0) {
 			return this.Spielfeld[x][y];
 		}
 		
-		System.out.println(String.format("Keine gültige Eingabe an x = %d und y = %d", x,y));
+		else System.out.println(String.format("Keine gueltige Eingabe an x = %d und y = %d", x,y));
 		
 		return 0;
 	}
@@ -183,9 +184,8 @@ public class Simulator implements SimulatorInterface {
 				return false;
 		
 			case WEST:
-				for (int y = 0; y < this.height; y++) {
 				for (int x = this.width-1; x > 0; x--) {
-//					for (int y = 0; y < this.height; y++) {
+					for (int y = 0; y < this.height; y++) {
 						//check if values equal or empty space
 						if (getPieceAt(x,y) == getPieceAt(x-1,y) || (getPieceAt(x,y) == 0)) {
 							return true;
@@ -194,9 +194,8 @@ public class Simulator implements SimulatorInterface {
 				}
 				return false;
 			case EAST:
-				for (int y = 0; y < this.height; y++) {
 				for (int x = 1; x < this.width - 1; x++) {
-//					for (int y = 0; y < this.height; y++) {
+					for (int y = 0; y < this.height; y++) {
 						//check if values equal or empty space
 						if (getPieceAt(x,y) == getPieceAt(x+1,y) || (getPieceAt(x,y) == 0)) {
 							return true;
@@ -237,16 +236,17 @@ public class Simulator implements SimulatorInterface {
 			case NORTH: 	
 			//fill the fields
 				for(int x=0;x<width;x++){
-					for(int y=0;y<height-1;y++) {
+					for(int y=0;y<height--;y++) {
+					
 						if (getPieceAt(x,y)==0) {
 							int z = y++;
 							while(z < height ) {
 							if (	(value= getPieceAt(x,z) )> 0) {
 								setPieceAt(x,y,value);
 								setPieceAt(x,z,0);
-								
+								break;
 							}
-							z++;
+							else z++;
 							}
 						}
 					}
@@ -272,9 +272,9 @@ public class Simulator implements SimulatorInterface {
 							if (	(value= getPieceAt(x,z) )> 0) {
 								setPieceAt(x,y,value);
 								setPieceAt(x,z,0);
-								
+								break;
 							}
-							z++;
+							else z++;
 							}
 						}
 					}
@@ -286,16 +286,16 @@ public class Simulator implements SimulatorInterface {
 
 				//fill the fields
 				for(int x=0;x<width;x++){
-					for(int y=height;y>0;y--) {
+					for(int y=height--;y>0;y--) {
 						if (getPieceAt(x,y)==0) {
 							int z = y--;
-							while(z < 0 ) {
+							while(z > 0 ) {
 							if (	(value= getPieceAt(x,z) )> 0) {
 								setPieceAt(x,y,value);
 								setPieceAt(x,z,0);
-								
+								break;
 							}
-							z--;
+							else z--;
 							}
 						}
 					}
@@ -311,16 +311,16 @@ public class Simulator implements SimulatorInterface {
 				}
 				//fill the fields
 				for(int x=0;x<width;x++){
-					for(int y=height;y>0;y--) {
+					for(int y=height--;y>0;y--) {
 						if (getPieceAt(x,y)==0) {
 							int z = y--;
-							while(z < 0 ) {
+							while(z > 0 ) {
 							if (	(value= getPieceAt(x,z) )> 0) {
 								setPieceAt(x,y,value);
 								setPieceAt(x,z,0);
-								
+								break;
 							}
-							z--;
+							else z--;
 							}
 						}
 					}
@@ -335,13 +335,13 @@ public class Simulator implements SimulatorInterface {
 					for(int x=width--;x>0;x--) {
 						if (getPieceAt(x,y)==0) {
 							int z = x--;
-							while(z < 0 ) {
+							while(z > 0 ) {
 							if (	(value= getPieceAt(z,y) )> 0) {
 								setPieceAt(x,y,value);
 								setPieceAt(z,y,0);
-								
+								break;
 							}
-							z--;
+							else z--;
 							}
 						}
 					}
@@ -361,13 +361,13 @@ public class Simulator implements SimulatorInterface {
 					for(int x=width--;x>0;x--) {
 						if (getPieceAt(x,y)==0) {
 							int z = x--;
-							while(z < 0 ) {
+							while(z > 0 ) {
 							if (	(value= getPieceAt(z,y) )> 0) {
 								setPieceAt(x,y,value);
 								setPieceAt(z,y,0);
-								
+								break;
 							}
-							z--;
+							else z--;
 							}
 						}
 					}
@@ -384,9 +384,9 @@ public class Simulator implements SimulatorInterface {
 							if (	(value= getPieceAt(z,y) )> 0) {
 								setPieceAt(x,y,value);
 								setPieceAt(z,y,0);
-								
+								break;
 							}
-							z++;
+							else z++;
 							}
 						}
 					}
@@ -409,9 +409,9 @@ public class Simulator implements SimulatorInterface {
 							if (	(value= getPieceAt(z,y) )> 0) {
 								setPieceAt(x,y,value);
 								setPieceAt(z,y,0);
-								
+								break;
 							}
-							z++;
+							else z++;
 							}
 						}
 					}

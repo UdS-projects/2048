@@ -22,7 +22,7 @@ public class TTFEFactory {
 	 */
 	public static SimulatorInterface createSimulator(int width, int height,
 			Random r) {
-		Simulator game = new Simulator ( width , height, r );                      //i implemented this 
+		Simulator game = new Simulator ( height, width, r );                      
 		return game;
 	}
 
