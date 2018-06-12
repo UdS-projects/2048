@@ -147,9 +147,52 @@ public class Simulator implements SimulatorInterface {
 	@Override
 	public boolean isMovePossible() {
 		
-		if (isSpaceLeft() || isMovePossible(MoveDirection.NORTH) || isMovePossible(MoveDirection.SOUTH)  || isMovePossible(MoveDirection.WEST) || isMovePossible(MoveDirection.EAST)) {
+		boolean tr = true;
+		for(int x = 0 ; x<this.width;x++){
+			
+			for(int y=0;y<this.height;y++) {
+				
+				if(Spielfeld[x][y]!=0) {
+					tr=false;
+					
+				}
+				
+			}
+			
+		}
+		
+		if(tr)
+			return false;
+		
+for(int x = 0 ; x<this.width;x++){
+			
+			for(int y=0;y<this.height-1;y++) {
+				
+				if (isSpaceLeft()||Spielfeld[x][y]==Spielfeld[x][y+1]) {
+					
+					return true;
+				}
+					
+				}
+				
+			}
+
+for(int x = 0 ; x<this.width-1;x++){
+	
+	for(int y=0;y<this.height;y++) {
+		
+		if (Spielfeld[x][y]==Spielfeld[x+1][y]) {
+			
 			return true;
 		}
+			
+		}
+		
+	}
+			
+		
+		
+		
 		
 		return false;
 	}
