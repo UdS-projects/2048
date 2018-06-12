@@ -336,7 +336,7 @@ for(int x = 0 ; x<this.width-1;x++){
 					for(int y=height-1;y>0;y--) {
 						if (getPieceAt(x,y)==0) {
 							int z = y-1;
-							while(z > 0 ) {
+							while(z > -1 ) {
 							if (	(value= getPieceAt(x,z) )> 0) {
 								setPieceAt(x,y,value);
 								setPieceAt(x,z,0);
@@ -361,7 +361,7 @@ for(int x = 0 ; x<this.width-1;x++){
 					for(int y=height-1;y>0;y--) {
 						if (getPieceAt(x,y)==0) {
 							int z = y-1;
-							while(z > 0 ) {
+							while(z > -1 ) {
 							if (	(value= getPieceAt(x,z) )> 0) {
 								setPieceAt(x,y,value);
 								setPieceAt(x,z,0);
@@ -382,7 +382,7 @@ for(int x = 0 ; x<this.width-1;x++){
 					for(int x=width-1;x>0;x--) {
 						if (getPieceAt(x,y)==0) {
 							int z = x-1;
-							while(z > 0 ) {
+							while(z > -1 ) {
 							if (	(value= getPieceAt(z,y) )> 0) {
 								setPieceAt(x,y,value);
 								setPieceAt(z,y,0);
@@ -408,7 +408,7 @@ for(int x = 0 ; x<this.width-1;x++){
 					for(int x=width-1;x>0;x--) {
 						if (getPieceAt(x,y)==0) {
 							int z = x-1;
-							while(z > 0 ) {
+							while(z > -1 ) {
 							if (	(value= getPieceAt(z,y) )> 0) {
 								setPieceAt(x,y,value);
 								setPieceAt(z,y,0);
@@ -484,6 +484,7 @@ for(int x = 0 ; x<this.width-1;x++){
 			if (this.isMovePossible(direction)) {
 				//missing: add the points in performMove()
 				this.performMove(direction);
+				addPiece();
 				ui.updateScreen(this);
 			} else {
 				//show error message that the direction is not possible
